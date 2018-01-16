@@ -1,0 +1,65 @@
+{#{% extends 'base.html' %}#}
+{#{% import "bootstrap/wtf.html" as wtf %}#}
+{#{% block content %}#}
+
+{#  <form action="/login" method="post">#}
+{#    <legend>Please sign in:</legend>#}
+{#    <p><input name="username" placeholder="Username" value="{{ username }}"></p>#}
+{#    <p><input name="password" placeholder="Password" type="password" value="{{ password }}"></p>#}
+{#    <p><button type="submit">Sign In</button></p>#}
+{#  </form>#}
+
+{#    <div class="col-md-4">#}
+{# {{ wtf.quick_form(form) }}#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+
+{##}
+{#{% extends "base.html" %}#}
+{#{% import "bootstrap/wtf.html" as wtf %}#}
+{#{% block content %}#}
+{#<html>#}
+{#    <head>#}
+{#        <title>Login Page</title>#}
+{#    </head>#}
+{#    <body>#}
+{#        <form action="{{ url_for("auth.login") }}" method="POST">#}
+{#        <p>#}
+{#            User Name:<br>#}
+{#            <input type="text" name="username" /><br>#}
+{#        </p>#}
+{#        <p>#}
+{#            Password:</br>#}
+{#            <input type="password" name="password" /><br>#}
+{#        </p>#}
+{#        <p>#}
+{#            <input type="checkbox" name="remember_me"/>Remember Me#}
+{#        </p>#}
+{#            {{ wtf.quick_form(form) }}#}
+{#        </form>#}
+{#    </body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>登录</h1>
+  <form action="{{ url_for("auth.login") }}" method="post" name="login">
+      {{ form.csrf_token }}
+      <p>
+          <br>{{ form.name.label }}<br>
+          <br>{{ form.name(size=80) }}<br>
+      </p>
+      <p>
+          <br>{{ form.password.label }}<br>
+          <!-- 我们可以传递input标签的属性，这里传递的是size属性 -->
+          <br>{{ form.password(size=80) }}<br>
+      </p>
+      <p>{{ form.remember_me }} Remember Me</p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+{% endblock %}
