@@ -13,7 +13,6 @@ def login():
     if form.validate_on_submit():
         name = form.name.data
         password = hashlib.md5(form.password.data).hexdigest()
-
         user = util.get_user(name=name)
         if user and password == user.password:
             return redirect(url_for('main.inventory'))

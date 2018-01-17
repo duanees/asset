@@ -34,16 +34,88 @@
                 </tr>
                 </thead>
                 <tbody>
+{#                {% for data in datas %}#}
+{#                    <tr>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.serial_no | replace_none | replace_serial }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.type |  replace_type }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.idc | replace_none | replace_idc }} {{ data.cabinet | replace_none }} {{ data.addresses | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.host_name | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.model | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.asset_code | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.asset_sn | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.ip_value | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.ip_admin |  replace_ip }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.department | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.interfac_person | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.project | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.project_contract | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.project_acceptance_time | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.state | replace_none | replace_state }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.off_shelf_evaluation | replace_none | replace_evaluation }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.cpu_config | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.memory_config | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.disk_config | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.cpu_use_rate | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.memory_use_rate | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.disk_use_rate | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <nobr>{{ data.remark | replace_none }}</nobr>#}
+{#                        </td>#}
+{#                    #}
                 {% for data in datas %}
                     <tr>
                         <td>
-                            <nobr>{{ data.serial_no | replace_none | replace_serial }}</nobr>
+                            <nobr>{{ data.serial_no | replace_none }}</nobr>
                         </td>
                         <td>
-                            <nobr>{{ data.type |  replace_type }}</nobr>
+                            <nobr>{{ data.type_name }}</nobr>
                         </td>
                         <td>
-                            <nobr>{{ data.idc | replace_none | replace_idc }} {{ data.cabinet | replace_none }} {{ data.addresses | replace_none }}</nobr>
+                            <nobr>{{ data.idc_name | replace_none }} {{ data.cabinet | replace_none }} {{ data.cabinet_addresses | replace_none }}</nobr>
                         </td>
                         <td>
                             <nobr>{{ data.host_name | replace_none }}</nobr>
@@ -58,10 +130,13 @@
                             <nobr>{{ data.asset_sn | replace_none }}</nobr>
                         </td>
                         <td>
+                              <nobr>{{ data.ip_business_code | replace_none }}</nobr>
+                        </td>
+                        <td>
                             <nobr>{{ data.ip_value | replace_none }}</nobr>
                         </td>
                         <td>
-                            <nobr>{{ data.ip_admin |  replace_ip }}</nobr>
+                            <nobr>{{ data.ip_admin }}</nobr>
                         </td>
                         <td>
                             <nobr>{{ data.department | replace_none }}</nobr>
@@ -79,10 +154,10 @@
                             <nobr>{{ data.project_acceptance_time | replace_none }}</nobr>
                         </td>
                         <td>
-                            <nobr>{{ data.state | replace_none | replace_state }}</nobr>
+                            <nobr>{{ data.state | replace_none }}</nobr>
                         </td>
                         <td>
-                            <nobr>{{ data.off_shelf_evaluation | replace_none | replace_evaluation }}</nobr>
+                            <nobr>{{ data.off_shelf_evaluation | replace_none }}</nobr>
                         </td>
                         <td>
                             <nobr>{{ data.cpu_config | replace_none }}</nobr>

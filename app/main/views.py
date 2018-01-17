@@ -23,7 +23,7 @@ ROW_COUNT = 15
 def index():
     return redirect(url_for('auth.login'))
 
-@main.route('/inventory',methods=['GET','POST'])
+@main.route('/inventory/',methods=['GET','POST'])
 # @login_required
 def inventory():
     form = forms.SearchForm()
@@ -35,16 +35,16 @@ def inventory():
     datas = []
     data_list, count = util.list_data(**kwargs)
     for data in data_list:
-        ip_business = data.ip_business
-        department = data.department
-        data = data.Inventory
-        data.ip_business = ip_business
-        data.department = department
+    #     ip_business = data.ip_business
+    #     department = data.department
+    #     data = data.Inventory
+    #     data.ip_business = ip_business
+    #     data.department = department
         datas.append(data)
 
     thead_list = [
                  "序号", "资产类型", "资产位置","主机名","资产型号",
-                  "资产编号","资产序列号", "业务IP", "管理IP", "所属部门",
+                  "资产编号","资产序列号","IPcode", "业务IP", "管理IP", "所属部门",
                   "资产接口人", "归属项目", "项目合同", "终验时间", "状态", "下架评估",
                   "CPU配置", "内存配置", "硬盘配置", "CPU使用率", "内存使用率", "硬盘使用率", "备注"
                   ]

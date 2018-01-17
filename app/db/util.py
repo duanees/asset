@@ -24,32 +24,32 @@ class ConnectionPool():
 #                                       ).order_by(Inventory.serial_no).offset(page).limit(row_count).all()
 #         count = session.query(Inventory).filter(Inventory.is_delete == 0).count()
 #     return data, count
+#
+# def list_data(**kwargs):
+#     page = kwargs.get('page', 1)
+#     row_count = kwargs.get('row_count', 15)
+#     with ConnectionPool() as session:
+#         data = session.query(Inventory,DepartmentView.department, func.IF(Inventory.ip_business_code,
+#                                                 func.group_concat(func.inet_ntoa(Inventory_Ip.ip_value),
+#                                                                                    ), '').label('ip_business')
+#                              ).outerjoin(Inventory_Ip, Inventory_Ip.ip_business_code == Inventory.ip_business_code
+#                                          ).outerjoin(DepartmentView, DepartmentView.department_id == Inventory.department
+#                                                      ).filter(Inventory.is_delete == 0
+#                                                               ).group_by(Inventory.serial_no
+#                                                                          ).order_by(Inventory.serial_no
+#                                                                                      ).offset(page).limit(
+#             row_count).all()
+#         count = session.query(Inventory).filter(Inventory.is_delete == 0).count()
+#     return data, count
 
 def list_data(**kwargs):
     page = kwargs.get('page', 1)
     row_count = kwargs.get('row_count', 15)
     with ConnectionPool() as session:
-        data = session.query(Inventory,DepartmentView.department, func.IF(Inventory.ip_business_code,
-                                                func.group_concat(func.inet_ntoa(Inventory_Ip.ip_value),
-                                                                                   ), '').label('ip_business')
-                             ).outerjoin(Inventory_Ip, Inventory_Ip.ip_business_code == Inventory.ip_business_code
-                                         ).outerjoin(DepartmentView, DepartmentView.department_id == Inventory.department
-                                                     ).filter(Inventory.is_delete == 0
-                                                              ).group_by(Inventory.serial_no
-                                                                         ).order_by(Inventory.serial_no
-                                                                                     ).offset(page).limit(
+        data = session.query(InventoryView).group_by(InventoryView.serial_no).offset(page).limit(
             row_count).all()
-        count = session.query(Inventory).filter(Inventory.is_delete == 0).count()
+        count = session.query(InventoryView).filter(InventoryView.is_delete == 0).count()
     return data, count
-
-# def list_data(**kwargs):
-#     page = kwargs.get('page', 1)
-#     row_count = kwargs.get('row_count', 15)
-#     with ConnectionPool() as session:
-#         data = session.query(InventoryView).group_by(InventoryView.serial_no).offset(page).limit(
-#             row_count).all()
-#         count = session.query(InventoryView).filter(InventoryView.is_delete == 0).count()
-#     return data, count
 
 def get_user(dgdh=None, name=None):
     with ConnectionPool() as session:
