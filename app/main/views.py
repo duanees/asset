@@ -7,7 +7,7 @@ from app.db import util
 # from app.main implort main
 from app import function
 from . import main
-from flask.ext.login import login_required
+from flask_login import login_required
 from app.main import forms
 import uuid
 import socket
@@ -35,11 +35,11 @@ def inventory():
     datas = []
     data_list, count = util.list_data(**kwargs)
     for data in data_list:
-    #     # ip_business = data.ip_business
-    #     # department = data.department
+        ip_business = data.ip_business
+        department = data.department
         data = data.Inventory
-    #     # data.ip_business = ip_business
-    #     # data.department = department
+        data.ip_business = ip_business
+        data.department = department
         datas.append(data)
 
     thead_list = [

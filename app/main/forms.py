@@ -1,5 +1,5 @@
 #coding=utf-8
-from flask.ext.wtf import Form,FlaskForm
+from flask_wtf import Form,FlaskForm
 from wtforms.validators import Length, Email,DataRequired
 from wtforms import StringField, IntegerField, SubmitField,SelectField,DateTimeField,validators
 from app.db import util

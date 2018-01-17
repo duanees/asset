@@ -1,7 +1,7 @@
 #/usr/bin/env python
 import os
 import sys
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager, Shell
 
 from app import create_app, db
