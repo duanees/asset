@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, func
 from sqlalchemy import alias, and_, func,outerjoin, or_
 from sqlalchemy.orm import sessionmaker, aliased
 from app.db.models import *
-engine=create_engine("mysql+pymysql://root:zbb629@localhost:3306/wasu?charset=utf8", encoding='utf8')
+engine=create_engine("mysql+pymysql://11q:jczc@666@172.25.135.121:3306/wasu?charset=utf8", encoding='utf8')
 
 class ConnectionPool():
     def __init__(self):
@@ -53,7 +53,7 @@ def list_data(**kwargs):
 
 def get_user(dgdh=None, name=None):
     with ConnectionPool() as session:
-        data = session.query(User.dgdh, User.name, User.password, ActionView.dgdh).filter(
+        data = session.query(User.dgdh, User.name, User.password_hash, ActionView.dgdh).filter(
             and_(or_(User.name == name, User.dgdh == dgdh))
         ).all()
     return data[0] if data else None

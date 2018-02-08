@@ -68,7 +68,7 @@ class User(UserMixin,Base):
     __tablename__ = 'idc_asset_inventory_user'
     dgdh = Column(Integer, primary_key=True,unique=True)
     name = Column(String(50))
-    password = Column(Text)
+    password_hash = Column(Text)
     # idc_asset_inventory_user_action_view = relationship('Action',backref='user')
 
 

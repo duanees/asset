@@ -14,7 +14,7 @@ def login():
         name = form.name.data
         password = hashlib.md5(form.password.data).hexdigest()
         user = util.get_user(name=name)
-        if user and password == user.password:
+        if user and password == user.password_hash:
             return redirect(url_for('main.inventory'))
     # name = request.form.get('username',None)
     # password = request.form.get('password',None)
